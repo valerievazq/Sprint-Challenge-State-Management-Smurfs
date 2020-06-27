@@ -1,3 +1,14 @@
 .App {
   text-align: center;
+  padding: 50px 0;
+}
+
+.formInput {
+  margin: 20px;
+}
+
+.residents {
+  background-color: rgb(157, 217, 219);
+  padding: 20px 0;
+  margin: 30px 0;
 }
