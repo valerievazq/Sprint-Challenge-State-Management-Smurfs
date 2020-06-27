@@ -1,26 +1,25 @@
 import axios from "axios";
-​
-export const START_FETCHING = "START_FETCHING";
+//THIS IS WHERE THE API SENDS A REQUEST AND RETURN THE INFORMATION
+export const INITIAL_FETCH = "INITIAL_FETCH";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
-export const FETCH_FAILURE = "FETCH_FAILURE";
-​
+export const FETCH_FAIL = "FETCH_FAIL";
+//FORM THAT ADDS A NEW SMURF
 export const ADD_START = "ADD_START";
 export const ADD_SUCCESS = "ADD_SUCCESS";
 export const ADD_FAILURE = "ADD_FAILURE";
-​
+//WHEN DELETING A SMURF
 export const REMOVE_ITEM = "REMOVE_ITEM";
 export const REMOVE_SUCCESS = "REMOVE_SUCCESS";
 export const REMOVE_FAILURE = "REMOVE_FAILURE";
-​
-//this does async action
+
 export const fetchSmurfs = () => (dispatch) => {
-  dispatch({ type: START_FETCHING });
+  dispatch({ type: INITIAL_FETCH });
   axios
     .get("http://localhost:3333/smurfs")
     .then((res) => dispatch({ type: FETCH_SUCCESS, payload: res.data }))
-    .catch((err) => dispatch({ type: FETCH_FAILURE, payload: err.response }));
+    .catch((err) => dispatch({ type: FETCH_FAIL, payload: err.response }));
 };
-​
+
 export const addSmurf = (name, age, height) => (dispatch) => {
   dispatch({ type: ADD_START });
   axios
@@ -28,7 +27,6 @@ export const addSmurf = (name, age, height) => (dispatch) => {
     .then((res) => dispatch({ type: ADD_SUCCESS }))
     .catch((err) => dispatch({ type: ADD_FAILURE }));
 };
-​
 export const removeSmurf = (id) => (dispatch) => {
   dispatch({ type: REMOVE_ITEM });
   axios
